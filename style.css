@@ -1,0 +1,7 @@
+.tweets {
+    margin: 5px 0px;
+}
+
+.tweets + .tweets {
+    border-top: black solid 1px;
+}

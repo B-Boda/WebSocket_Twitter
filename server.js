@@ -7,7 +7,7 @@ ws.on('connection', socket => {
     socket.on('message', message => {
         console.log("Received: " + message);
         ws.clients.forEach(client => {
-            client.send("<div class='tweets'>" + message + "</div>");
+            client.send(message+"");
         });
     });
 

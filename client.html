@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -24,7 +25,9 @@
 
         // サーバーからデータを受け取る
         sock.addEventListener('message', function (e) {
-            output.insertAdjacentHTML("beforeend",e.data);
+            console.log(e.data);
+            obj=JSON.parse(e.data);
+            output.insertAdjacentHTML("afterbegin","<div class='tweets'>"+obj.username+"<br>"+obj.text+"</div>");
         });
     </script>
 </body>
