@@ -19,12 +19,11 @@
 
         // 接続
         sock.addEventListener('open', function (e) {
-            console.log('Socket 接続成功');
+            console.log('Socket Connected');
         });
 
         // サーバーからデータを受け取る
         sock.addEventListener('message', function (e) {
-            console.log(e.data);
             output.insertAdjacentHTML("beforeend",e.data);
         });
     </script>
