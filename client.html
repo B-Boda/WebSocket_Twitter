@@ -12,24 +12,24 @@
 <body>
 
     <div id="output_area">
+        <div class="tweets">
+            <div class="names">
+                <span class="username">Username</span>
+                <span class="displayname">@display_name</span>
+            </div>
+            <div class="head">reply to</div>
+            <div class="text">Test Text</div>
+        </div>
+        <div class="tweets">
+            <div class="names">
+                <span class="username">Username2</span>
+                <span class="displayname">@display_name2</span>
+            </div>
+            <div class="text">Test Text2</div>
+        </div>
     </div>
 
-    <script>
-        var sock = new WebSocket('ws://localhost:8081');
-        var output = document.getElementById("output_area");
-
-        // 接続
-        sock.addEventListener('open', function (e) {
-            console.log('Socket Connected');
-        });
-
-        // サーバーからデータを受け取る
-        sock.addEventListener('message', function (e) {
-            console.log(e.data);
-            obj=JSON.parse(e.data);
-            output.insertAdjacentHTML("afterbegin","<div class='tweets'>"+obj.username+"<br>"+obj.text+"</div>");
-        });
-    </script>
+    <script type="text/javascript" src="client.js"></script>
 </body>
 
 </html>

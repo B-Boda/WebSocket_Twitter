@@ -1,7 +1,16 @@
 .tweets {
-    margin: 5px 0px;
+    padding: 10px 0px;
 }
 
 .tweets + .tweets {
     border-top: black solid 1px;
+}
+
+.tweets .names .username {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.tweets .names .displayname {
+    color: gray;
 }

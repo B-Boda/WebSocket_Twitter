@@ -42,7 +42,6 @@ class MyStreamListener(tweepy.StreamListener):
 				except AttributeError:
 					txt = status.text
 
-
 			if status.in_reply_to_screen_name == None: #リプライでない場合
 				head = ""
 
