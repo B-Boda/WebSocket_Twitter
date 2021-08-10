@@ -5,7 +5,7 @@ function add_div_with_class (className,content) {
     let newDiv = document.createElement("div");
     newDiv.classList.add(className);
     if (content!==null) {
-        newDiv.appendChild(document.createTextNode(content));
+        newDiv.insertAdjacentHTML("afterbegin",content);
     }
     return newDiv;
 }
