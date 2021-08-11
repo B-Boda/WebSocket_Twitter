@@ -15,13 +15,18 @@ sock.addEventListener('open', function (e) {
     console.log('Socket Connected');
 });
 
+sock.addEventListener("error", function(e) {
+    console.log(e);
+    output.insertBefore(add_div_with_class("err","WebSocket Connection Failed"),output.firstChild);
+})
+
 // サーバーからデータを受け取る
 sock.addEventListener('message', function (e) {
     console.log(e.data);
     obj = JSON.parse(e.data);
     tweetDiv = add_div_with_class("tweets",null);
     names = add_div_with_class("names",null);
-    names.insertAdjacentHTML("afterbegin", "<span class='username'>"+obj.username+"</span>"+"<span class='displayname'>@"+obj.screenname+"</span>");
+    names.insertAdjacentHTML("afterbegin", "<span class='username'>"+obj.name+"</span>"+"<span class='displayname'>@"+obj.screen_name+"</span>");
     tweetDiv.appendChild(names);
     if (obj.head!=="") {
         tweetDiv.appendChild(add_div_with_class("head",obj.head));

@@ -55,12 +55,12 @@ class MyStreamListener(tweepy.StreamListener):
 
 			txt = txt.replace("&amp;", "&") #&amp;の書き換え
 			data={}
-			data["username"]=status.user.name
-			data["screenname"]=status.user.screen_name
+			data["name"]=status.user.name
+			data["screen_name"]=status.user.screen_name
 			data["head"]=head
 			data["text"]=txt
-			print(data)
-			ws.send(json.dumps(data))
+			print(json.dumps(status._json,ensure_ascii=False))
+			ws.send(json.dumps(data,ensure_ascii=False))
 
 myStreamListener = MyStreamListener()
 myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
