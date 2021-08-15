@@ -14,6 +14,7 @@ auth.set_access_token(access_token, access_secret)
 api = tweepy.API(auth)
 
 ids = api.friends_ids("305_tb_")
+#ids = api.friends_ids("Microsoft")
 ids_str = [str(n) for n in ids]
 ids_str.append("920915076369891328")
 

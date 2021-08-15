@@ -6,6 +6,10 @@
     border-top: black solid 1px;
 }
 
+.tweets .rt_status {
+    color: gray;
+}
+
 .tweets .names .username {
     font-weight: bold;
     margin-right: 10px;
