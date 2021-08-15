@@ -60,7 +60,8 @@ class MyStreamListener(tweepy.StreamListener):
 			data["head"]=head
 			data["text"]=txt
 			print(json.dumps(status._json,ensure_ascii=False))
-			ws.send(json.dumps(data,ensure_ascii=False))
+			#ws.send(json.dumps(data,ensure_ascii=False))
+			ws.send(json.dumps(status._json,ensure_ascii=False))
 
 myStreamListener = MyStreamListener()
 myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
