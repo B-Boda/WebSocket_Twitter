@@ -1,5 +1,15 @@
+body {
+    line-height: 150%;
+}
+
 .tweets {
     padding: 10px 0px;
+    transition: .7s;
+    opacity: 0;
+}
+
+.tweets, .shown {
+    opacity: 1;
 }
 
 .tweets + .tweets {

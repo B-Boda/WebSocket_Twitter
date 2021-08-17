@@ -66,11 +66,5 @@ sock.addEventListener('message', function (e) {
     tweetDiv.appendChild(names);
     // 内容入れて
     tweetDiv.appendChild(add_div_with_class("text",full_text(obj).replace(/\n/g, "<br>")));
-    tweetDiv.classList.add("before_displayed");
-
     output.insertBefore(tweetDiv,output.firstChild);
-    let hidden = document.querySelectorAll(".before_displayed");
-    hidden.forEach(function (e) {
-        e.classList.remove("before_displayed");
-    });
 });
