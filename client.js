@@ -46,7 +46,7 @@ sock.addEventListener('open', function (e) {
 
 sock.addEventListener("error", function(e) {
     console.log(e);
-    output.insertBefore(add_div_with_class("err","WebSocket Connection Failed"),output.firstChild);
+    output.insertBefore(add_div_with_class("err","<i class=\"fas fa-exclamation-circle\"></i>WebSocket Connection Failed"),output.firstChild);
 });
 
 // サーバーからデータを受け取る
@@ -58,7 +58,7 @@ sock.addEventListener('message', function (e) {
     tweetDiv = add_div_with_class("tweets",null);
     // RTのときHN
     if ("retweeted_status" in obj) {
-        tweetDiv.appendChild(add_div_with_class("rt_status", obj.user.name + " retweeted"));
+        tweetDiv.appendChild(add_div_with_class("rt_status", "<i class=\"fas fa-retweet\"></i>" + obj.user.name + " retweeted"));
     };
     // HNつけて
     names = add_div_with_class("names",null);
@@ -66,5 +66,11 @@ sock.addEventListener('message', function (e) {
     tweetDiv.appendChild(names);
     // 内容入れて
     tweetDiv.appendChild(add_div_with_class("text",full_text(obj).replace(/\n/g, "<br>")));
+    tweetDiv.classList.add("before_displayed");
+
     output.insertBefore(tweetDiv,output.firstChild);
+    let hidden = document.querySelectorAll(".before_displayed");
+    hidden.forEach(function (e) {
+        e.classList.remove("before_displayed");
+    });
 });
