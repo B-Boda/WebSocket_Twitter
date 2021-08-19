@@ -1,15 +1,27 @@
+:root {
+    --font-size: 16px;
+}
+
 body {
     line-height: 150%;
 }
 
-.tweets {
-    padding: 10px 0px;
-    transition: .7s;
-    opacity: 0;
+/*grid*/
+.tweet_body {
+    display: grid;
+    grid-template-columns: 50px auto;
 }
 
-.tweets, .shown {
-    opacity: 1;
+.tweet_body .profile_img {
+    grid-column: 1/2;
+}
+
+.tweet_body .contents {
+    grid-column: 2/3;
+}
+
+.tweets {
+    padding: 10px 0px;
 }
 
 .tweets + .tweets {
@@ -20,15 +32,16 @@ body {
     color: gray;
 }
 
-.tweets .names .username {
+.contents .reply_status {
+    color: gray;
+}
+
+.contents .names .username {
     font-weight: bold;
     margin-right: 10px;
 }
 
-.tweets .names .displayname {
+.contents .names .displayname {
     color: gray;
 }
 
-.before_displayed {
-    display: none;
-}
