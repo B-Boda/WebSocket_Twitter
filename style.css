@@ -9,7 +9,7 @@ body {
 /*grid*/
 .tweet_body {
     display: grid;
-    grid-template-columns: 50px auto;
+    grid-template-columns: 60px auto;
 }
 
 .tweet_body .profile_img {
@@ -19,17 +19,23 @@ body {
 .tweet_body .contents {
     grid-column: 2/3;
 }
+/*grid end*/
 
 .tweets {
-    padding: 10px 0px;
+    padding: 15px 0px;
 }
 
 .tweets + .tweets {
     border-top: black solid 1px;
 }
 
+.tweets .profile_img {
+    margin: 0 auto;
+}
+
 .tweets .rt_status {
     color: gray;
+    padding: 5px 0;
 }
 
 .contents .reply_status {

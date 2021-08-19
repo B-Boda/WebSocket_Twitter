@@ -85,7 +85,12 @@ sock.addEventListener('message', function (e) {
     // 内容入れて
     contentDiv.appendChild(add_div_with_class("text",full_text(obj).replace(/\n/g, "<br>")));
     // profile image
-    tweetBody.appendChild(create_img(obj.user.profile_image_url,"profile_img"));
+    if ("retweeted_status" in obj) {
+        tweetBody.appendChild(create_img(obj.retweeted_status.user.profile_image_url,"profile_img"));
+    }else{
+        tweetBody.appendChild(create_img(obj.user.profile_image_url,"profile_img"));
+    };
+    // finalize
     tweetBody.appendChild(contentDiv);
     tweetDiv.appendChild(tweetBody);
     output.insertBefore(tweetDiv,output.firstChild);
