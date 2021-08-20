@@ -64,31 +64,45 @@ sock.addEventListener("error", function(e) {
 sock.addEventListener('message', function (e) {
     //console.log(e.data);
     obj = JSON.parse(e.data);
-    console.log(obj.in_reply_to_screen_name);
+    console.log(obj.entities.media);
 
-    // とりあえず枠だけ作って
+    // frame
     tweetDiv = add_div_with_class("tweets",null)
     tweetBody = add_div_with_class("tweet_body",null);
     contentDiv = add_div_with_class("contents",null);
-    // RTのときHN
+    // check if rt
     if ("retweeted_status" in obj) {
         tweetDiv.appendChild(add_div_with_class("rt_status", "<i class=\"fas fa-retweet\"></i>" + obj.user.name + " retweeted"));
     };
-    // HNつけて
+    // generate names
     names = add_div_with_class("names",null);
     names.insertAdjacentHTML("beforeend", "<span class='username'>"+show_name(obj).name+"</span>"+"<span class='displayname'>"+show_name(obj).screen_name+"</span>");
     contentDiv.appendChild(names);
-    // リプ
+    // reply
     if (obj.in_reply_to_screen_name != null) {
         contentDiv.appendChild(add_div_with_class("reply_status", "<i class=\"fas fa-reply\"></i>@"+obj.in_reply_to_screen_name));
     };
-    // 内容入れて
+    // text
     contentDiv.appendChild(add_div_with_class("text",full_text(obj).replace(/\n/g, "<br>")));
     // profile image
     if ("retweeted_status" in obj) {
         tweetBody.appendChild(create_img(obj.retweeted_status.user.profile_image_url,"profile_img"));
     }else{
         tweetBody.appendChild(create_img(obj.user.profile_image_url,"profile_img"));
+    };
+    // attatched image
+    if ("retweeted_status" in obj) {
+        if ("media" in obj.retweeted_status.entities) {
+            for (img in obj.retweeted_status.entities) {
+                contentDiv.appendChild(create_img(img.media_url));
+            }
+        }
+    }else{
+        if ("media" in obj.entities) {
+            for (img in obj.entities) {
+                contentDiv.appendChild(create_img(img.media_url));
+            }
+        }
     };
     // finalize
     tweetBody.appendChild(contentDiv);
