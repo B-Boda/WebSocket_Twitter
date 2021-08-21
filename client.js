@@ -93,13 +93,14 @@ sock.addEventListener('message', function (e) {
     // attatched image
     if ("retweeted_status" in obj) {
         if ("media" in obj.retweeted_status.entities) {
-            for (img in obj.retweeted_status.entities) {
+            for (img of obj.retweeted_status.entities.media) {
                 contentDiv.appendChild(create_img(img.media_url));
             }
         }
     }else{
         if ("media" in obj.entities) {
-            for (img in obj.entities) {
+            console.log(obj.entities.media[0]);
+            for (img of obj.entities.media) {
                 contentDiv.appendChild(create_img(img.media_url));
             }
         }
