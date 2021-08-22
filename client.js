@@ -93,15 +93,25 @@ sock.addEventListener('message', function (e) {
     // attatched image
     if ("retweeted_status" in obj) {
         if ("media" in obj.retweeted_status.entities) {
+            token = Math.random().toString(32).substring(2);
             for (img of obj.retweeted_status.entities.media) {
-                contentDiv.appendChild(create_img(img.media_url));
+                imgLink = document.createElement("a");
+                imgLink.href = img.media_url;
+                imgLink.dataset.lightbox = token;
+                imgLink.innerHTML = create_img(img.media_url,"image");
+                contentDiv.appendChild(imgLink);
             }
         }
     }else{
         if ("media" in obj.entities) {
             console.log(obj.entities.media[0]);
+            token = Math.random().toString(32).substring(2);
             for (img of obj.entities.media) {
-                contentDiv.appendChild(create_img(img.media_url));
+                imgLink = document.createElement("a");
+                imgLink.href = img.media_url;
+                imgLink.dataset.lightbox = token;
+                imgLink.appendChild(create_img(img.media_url,"image"));
+                contentDiv.appendChild(imgLink);
             }
         }
     };
